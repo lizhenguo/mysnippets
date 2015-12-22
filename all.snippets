@@ -1,0 +1,30 @@
+# My own snippets for coding
+
+priority -40
+
+global !p
+from vimsnippets import foldmarker, make_box, get_comment_format
+endglobal
+
+# file information comment block
+snippet fbox "file information block" b
+`!p
+if not snip.c:
+	width = int(vim.eval("&textwidth - (virtcol('.') == 1 ? 0 : virtcol('.'))")) or 71
+box = make_box(len(t[1]), width)
+snip.rv = box[0]
+snip += box[1].strip()
+`filename: `!p snip.rv = snip.fn`
+`!p
+box = make_box(len(t[1]), width)
+snip.rv = box[1].strip()`function: ${1:content}
+`!p
+box = make_box(len(t[1]), width)
+snip.rv = box[1].strip()`author: ${2:lizhenguo}
+`!p
+box = make_box(len(t[1]), width)
+snip.rv = box[1].strip()`time: `date +%d.%b.%Y``!p
+box = make_box(len(t[1]), width)
+snip += box[3]`
+$0
+endsnippet
