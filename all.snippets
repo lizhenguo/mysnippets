@@ -13,18 +13,43 @@ if not snip.c:
 	width = int(vim.eval("&textwidth - (virtcol('.') == 1 ? 0 : virtcol('.'))")) or 71
 box = make_box(len(t[1]), width)
 snip.rv = box[0]
-snip += box[1].strip()
+snip += ' ' + box[1].strip() + ' '
 `filename: `!p snip.rv = snip.fn`
 `!p
 box = make_box(len(t[1]), width)
-snip.rv = box[1].strip()`function: ${1:content}
+snip.rv = ' ' + box[1].strip() + ' '`function: ${1:content}
 `!p
 box = make_box(len(t[1]), width)
-snip.rv = box[1].strip()`author: ${2:lizhenguo}
+snip.rv = ' ' + box[1].strip() + ' '`author: ${2:lizhenguo}
 `!p
 box = make_box(len(t[1]), width)
-snip.rv = box[1].strip()`time: `date +%d.%b.%Y``!p
+snip.rv = ' ' + box[1].strip() + ' '`time: `date +%d.%b.%Y``!p
 box = make_box(len(t[1]), width)
 snip += box[3]`
 $0
 endsnippet
+
+# function parameter and function information
+snippet fubox "function parameter and function" b
+`!p
+box = make_box(1, 1)
+snip.rv = box[0][:2]
+`
+`!p
+box = make_box(1)
+snip.rv = ' ' + box[1].rstrip() + ' '`funcname: ${1:funcname}
+`!p
+box = make_box(1)
+snip.rv = ' ' + box[1].rstrip() + ' '`function: ${2:content}
+`!p
+box = make_box(1)
+snip.rv = ' ' + box[1].rstrip() + ' '`para: ${3:none}
+`!p
+box = make_box(1)
+snip.rv = ' ' + box[1].rstrip() + ' '`return: ${4:none}
+`!p
+box = make_box(1, 1)
+snip.rv = ' ' + box[3][-2:]`
+$0
+endsnippet
+
