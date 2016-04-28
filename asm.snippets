@@ -1,0 +1,72 @@
+priority -40
+
+snippet int103 "Read Cursor Position and size"
+; int 0x10, 3 - read the cursor position
+; input:
+; AH = 03
+; BH = video page (0)
+; output:
+; CH = cursor starting scan line (low order 5 bits)
+; CL = cursor ending scan line (low order 5 bits)
+; DH = row
+; DL = column
+
+endsnippet
+
+snippet int1013 "Write String"
+; int 0x10,13 - write string
+; input:
+; AH = 13h
+; AL = write mode (see bit settings below)
+;    = 0 string is chars only, attribute in BL, cursor not moved
+;    = 1 string is chard only, attribute in BL, cursor moved
+;    = 2 string contains chars and attributes, cursor not moved
+;    = 3 string contains chars and attributes, cursor moved
+; BH = video page number
+; BL = attribute if mode 0 or 1 (AL bit 1=0)
+; CX = length of string (ignoring attributes)
+; DH = row coordinate
+; DL = column coordinate
+; ES:BP = pointer to string
+; output:
+
+endsnippet
+
+snippet int132 "Read Disk Sectors"
+; int 0x13,2 - read disk sectors
+; input:
+; AH = 02
+; AL = number of sectors to read	(1-128 dec.)
+; CH = track/cylinder number  (0-1023 dec., see below)
+; CL = sector number  (1-17 dec.)
+; DH = head number  (0-15 dec.)
+; DL = drive number (0=A:, 1=2nd floppy, 80h=drive 0, 81h=drive 1)
+; ES:BX = pointer to buffer
+; output
+; AH = status  
+; AL = number of sectors read
+; CF = 0 if successful
+;    = 1 if error
+endsnippet
+
+snippet int130 "Reset Disk System"
+; int 0x13,0 - reset disk system
+; input:
+; AH = 00
+; DL = drive number (0=A:, 1=2nd floppy, 80h=drive 0, 81h=drive 1)
+; output:
+; AH = disk operation status  
+; CF = 0 if successful
+;    = 1 if error
+
+endsnippet
+
+snippet ent_pro "Enter into Protected Mode"
+; 1. Disable interrupts
+; 2. Set up the gd (Global Descriptor) and gdt (Global Descriptor Table)
+; 3. Load the gdt descriptor
+; 4. Set 32-bit mode bit in cr0
+; 5. Flush the CPU pipeline by issuing a carefully crafted far jump
+; 6. Update all the segment registers and the stack
+; 7. Now, you can call the 32-bit code
+endsnippet
