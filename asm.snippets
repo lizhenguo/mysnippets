@@ -66,7 +66,9 @@ snippet ent_pro "Enter into Protected Mode"
 ; 2. Set up the gd (Global Descriptor) and gdt (Global Descriptor Table)
 ; 3. Load the gdt descriptor
 ; 4. Set 32-bit mode bit in cr0
-; 5. Flush the CPU pipeline by issuing a carefully crafted far jump
-; 6. Update all the segment registers and the stack
-; 7. Now, you can call the 32-bit code
+; 5. Switch on the 20th address
+; 6. Flush the CPU pipeline by issuing a carefully crafted far jump
+; 7. Update all the segment registers and the stack
+; 8. Now, you can call the 32-bit code
+
 endsnippet
