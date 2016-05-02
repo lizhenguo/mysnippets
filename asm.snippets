@@ -72,3 +72,17 @@ snippet ent_pro "Enter into Protected Mode"
 ; 8. Now, you can call the 32-bit code
 
 endsnippet
+
+snippet set_paging "Set up Paging"
+; 1. Set up page directory according to the memory
+; 2. Set up page table 
+; 3. Set cr3 pointing to the page directory
+; 4. Start up paging bit in cr0
+
+endsnippet
+
+snippet set_idt "Set up Interrupt" m
+; 1. set up 8259A
+; 2. set up idt (interrupt descriptor table)
+
+endsnippet
