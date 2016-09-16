@@ -1,5 +1,14 @@
 priority -40
 
+snippet dischar "Display a character in the video memory" 
+; Display a character in the video memory
+; video memory physical 0x000b8000
+mov ah, 0x0fh	; set the display attribute
+mov al, 'c'		; set the character to display
+mov [es: (80 * 1 + 39) * 2)], ax	; display 'c' in screen row 1, 39 column,
+									; note the display address will multiply 2
+endsnippet
+
 snippet int103 "Read Cursor Position and size"
 ; int 0x10, 3 - read the cursor position
 ; input:
@@ -62,6 +71,7 @@ snippet int130 "Reset Disk System"
 endsnippet
 
 snippet ent_pro "Enter into Protected Mode"
+; Enter into the Protected Mode
 ; 1. Disable interrupts
 ; 2. Set up the gd (Global Descriptor) and gdt (Global Descriptor Table)
 ; 3. Load the gdt descriptor
@@ -74,6 +84,7 @@ snippet ent_pro "Enter into Protected Mode"
 endsnippet
 
 snippet set_paging "Set up Paging"
+; Set up paging
 ; 1. Set up page directory according to the memory
 ; 2. Set up page table 
 ; 3. Set cr3 pointing to the page directory
@@ -81,10 +92,34 @@ snippet set_paging "Set up Paging"
 
 endsnippet
 
-snippet set_idt "Set up Interrupt" m
+snippet set_idt "Set up Interrupt"
+; Set up Interrupt
 ; 1. set up 8259A
 ; 2. set up idt (interrupt descriptor table) according to the interrupt 
 ; handling function address
 ; 3. set up the interrupt handling function for the specific interrupt
 
+endsnippet
+
+snippet ring0to1 "Initial switch from kernel to process ring0 to ring1" 
+; Switch from ring0(kernel) to ring1(process)
+; 1. construct the stack including EIP, CS, EFLAGS, ESP, SS
+; 2. set the ESP to point the well-constructed stack top
+; 3. just use 'iret(d)(iret and iretd interchangeably)' instruction
+endsnippet
+
+snippet set_tss "Setup TSS" 
+; Set up TSS
+; TSS is used for switching from low privilege to high privilege
+; 1. set up the TSS according to the TSS structure
+; 2. set up the TSS descriptor into the GDT
+; 3. load the TSS selector
+endsnippet       
+
+snippet multi_process "Realize multiply process" 
+; Realize multiply process
+; 1. switch from ring0 to ring1 to run process 0
+; 2. set up IDT, especially time interrupt to realize task switching
+; 3. set up process 0 and process 1 TSS and LDT
+; 4. set up process 0 and process 1 LDT descriptor and TSS descriptor
 endsnippet
