@@ -123,3 +123,19 @@ snippet multi_process "Realize multiply process"
 ; 3. set up process 0 and process 1 TSS and LDT
 ; 4. set up process 0 and process 1 LDT descriptor and TSS descriptor
 endsnippet
+
+snippet protected-mode "protected-mode summary" 
+; How to write real mode and protected mode code?
+; 1. mbr (master boot sector) in real mode code using the basic assembly code
+; 2. Protected mode:
+;	1. stop interrupt, because in protected-mode, the real-mode interrupt code is abnormal (nessary)
+;	2. set and load gdt, because in protected-mode, the segment register will use segment selector, instead of the address, note: the separation of code and data (nessary)
+;	3. set PE bit (nessary)
+;	4. start 21th address line (nessary)
+;	5. jump to 32bits code to flush the CPU pipeline (nessary)
+;	6. reset the ds, es, fs, gs, ss to be used in protected mode (nessary)
+;	7. set up paging (optional)
+;	8. set up interrupt (optional)
+;	9. set up LDT (optional)
+;	10. set up privelege (optional)
+endsnippet
