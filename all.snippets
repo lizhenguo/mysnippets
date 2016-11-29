@@ -80,6 +80,8 @@ endsnippet
 # ~ tilde
 # & ampersand
 # * asterisk
+# OK, there will be some problems when the words ends with the character below
+# is in another snippet, so define as fewer characters as possible
 snippet b "parenthesis" i
 (${1})${2}
 endsnippet
@@ -92,9 +94,9 @@ snippet c "curly bracket" i
 {${1}}${2}
 endsnippet
 
-snippet s "single quote" i
-'${1}'${2}
-endsnippet
+# snippet s "single quote" i
+# '${1}'${2}
+# endsnippet
 
 snippet d "double quote" i
 "${1}"${2}
