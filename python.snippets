@@ -1,10 +1,11 @@
 priority -40
 
-snippet ifname "If __name__ == '__main__'" b
-if __name__ == '__main__':
-	${1:foo}()
-$0
-endsnippet
+# There has already `ifmain` work like this
+# snippet ifname "If __name__ == '__main__'" b
+# if __name__ == '__main__':
+	# ${1:foo}()
+# $0
+# endsnippet
 
 snippet endalarm "Description" b
 os.system('notify-send -u critical "Program Executing Ended"')
