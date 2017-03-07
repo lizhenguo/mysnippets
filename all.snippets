@@ -106,30 +106,34 @@ endsnippet
 # * asterisk
 # OK, there will be some problems when the words ends with the character below
 # is in another snippet, so define as fewer characters as possible
+
+# imaginal mnemonic: < looks like v
+snippet v "angle bracket" i
+<${1}>${0}
+endsnippet
+
 snippet b "parenthesis" i
 (${1})${0}
+endsnippet
+
+# Chinese mnemonic: 卷括号(juan acronym)
+snippet j "curly bracket" i
+{${1}}${0}
+endsnippet
+
+# force mnemonic: z is used less
+snippet z "back tick" i
+\`${1}\`${0}
 endsnippet
 
 snippet p "bracket" i
 [${1}]${0}
 endsnippet
 
-snippet c "curly bracket" i
-{${1}}${0}
-endsnippet
-
 # snippet s "single quote" i
 # '${1}'${2}
 # endsnippet
 
-snippet d "double quote" i
+snippet q "double quote" i
 "${1}"${0}
-endsnippet
-
-snippet a "angle bracket" i
-<${1}>${0}
-endsnippet
-
-snippet t "back tick" i
-\`${1}\`${0}
 endsnippet
