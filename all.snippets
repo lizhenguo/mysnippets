@@ -29,10 +29,13 @@ box = make_box(1)
 snip.rv = ' ' + box[1].rstrip() + ' ' + '\t' * 2`${2:none}
 `!p
 box = make_box(len(t[1]), width)
-snip.rv = ' ' + box[1].strip() + ' '`Author: ${3:lizhenguo}
+snip.rv = ' ' + box[1].strip() + ' '`Author: ${3:zhenguoli}
 `!p
 box = make_box(len(t[1]), width)
-snip.rv = ' ' + box[1].strip() + ' '`Time: `date +%d.%b.%Y``!p
+snip.rv = ' ' + box[1].strip() + ' '`Contact: ${4:zhenguoli@hust.edu.cn}
+`!p
+box = make_box(len(t[1]), width)
+snip.rv = ' ' + box[1].strip() + ' '`Time: `date +'%d.%b.%Y %H:%M'``!p
 box = make_box(len(t[1]), width)
 snip += box[3]`
 $0

@@ -1,0 +1,33 @@
+snippet FormatData "Format Data Program C++ skeleton" b
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+using std::cout; using std::cin; using std::endl; using std::cerr;
+using std::ostream; using std::istream;
+using std::string;
+using std::istringstream; using std::ostringstream;
+using std::fstream; using std::ifstream; using std::ofstream;
+
+void formatdata(ostream &, const char *);
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        cout << "no argument, please provide argument" << endl;
+        return 0;
+    }
+    while (--argc) {
+        char *ifname = *++argv;
+        string ofname = string(ifname, 0, ${1:string(ifname).size()-4}) + "${2:.dat}";
+        // cout << ifname << ' ' << ofname << endl;
+        // formatdata(cout, ifname);
+        ofstream outstream(ofname);
+        formatdata(outstream, ifname);
+    }
+    return 0;
+}
+
+void formatdata(ostream &${4:os}, const char *${5:filename}) {
+	${6:#statements}
+}
+endsnippet
