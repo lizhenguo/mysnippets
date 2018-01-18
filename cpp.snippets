@@ -3,17 +3,19 @@ snippet FormatData "Format Data Program C++ skeleton" b
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <vector>
 using std::cout; using std::cin; using std::endl; using std::cerr;
 using std::ostream; using std::istream;
 using std::string;
 using std::istringstream; using std::ostringstream;
 using std::fstream; using std::ifstream; using std::ofstream;
+using std::vector;
 
 void formatdata(ostream &, const char *);
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        cout << "no argument, please provide argument" << endl;
+        cerr << "no argument, please provide argument" << endl;
         return 0;
     }
     while (--argc) {
