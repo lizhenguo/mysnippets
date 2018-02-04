@@ -1,0 +1,9 @@
+priority -40
+
+snippet binclean "Clean binary files" b
+clean:
+	for filename in *; do \
+		[ $$(file -b --mime-type "$$filename") = "application/x-executable" ] && echo "rm $$filename" \
+																		&& rm -f "$$filename"; \
+	done; exit 0
+endsnippet
