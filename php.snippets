@@ -5,6 +5,6 @@ snippet php "<?php ?>" b
 $0
 endsnippet
 
-snippet echoln "echo with newline in html" b
-echo ${1:code} . '<br />';$0
+snippet echoln "echo with newline in html"
+echo ${1:code}${1/.+/ \. /}'<br />';$0
 endsnippet
