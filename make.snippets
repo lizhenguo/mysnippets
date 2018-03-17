@@ -7,3 +7,27 @@ clean:
 																		&& rm -f "$$filename"; \
 	done; exit 0
 endsnippet
+
+snippet automake "automatic simple makefile" b
+SRC_DIRS = ./
+CC := g++
+CPPFLAGS := -I. -std=c++11 -Wall -Wextra -Wpedantic -g
+LDFLAGS :=
+
+DEPS := ${1:header.h}
+SRCPATTERN := ${2:*.cc}
+SRCS := $(shell find $(SRC_DIRS) -name '$(SRCPATTERN)')
+OBJS := $(addsuffix .o,$(basename $(SRCS)))
+
+.PHONY: ${3:run test}
+
+%.o: $(subst *,%,$(SRCPATTERN)) $(DEPS)
+	$(CC) $(CPPFLAGS) -c -o $@ $< $(LDFLAGS)
+
+${4:executable}: $(OBJS)
+	$(CC) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+
+clean:
+	rm -f $(OBJS)$0
+endsnippet
+
