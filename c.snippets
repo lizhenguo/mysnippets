@@ -1,4 +1,5 @@
 priority -40
 
-# file information comment block
-
+snippet scanf "scanf .. (scanf)"
+scanf("${1:%d}"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
