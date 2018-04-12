@@ -21,13 +21,16 @@ OBJS := $(addsuffix .o,$(basename $(SRCS)))
 
 .PHONY: ${3:run test}
 
-%.o: $(subst *,%,$(SRCPATTERN)) $(DEPS)
-	$(CC) $(CPPFLAGS) -c -o $@ $< $(LDFLAGS)
-
 ${4:executable}: $(OBJS)
 	$(CC) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+
+%.o: $(subst *,%,$(SRCPATTERN)) $(DEPS)
+	$(CC) $(CPPFLAGS) -c -o $@ $< $(LDFLAGS)
 
 clean:
 	rm -f $(OBJS)$0
 endsnippet
 
+snippet g++ "g++ common argument"
+g++ -std=c++11 -Wall -Wextra -Wpedantic -pedantic -g -o $@ $^
+endsnippet
