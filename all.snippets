@@ -114,21 +114,21 @@ endsnippet
 # OK, there will be some problems when the words ends with the character below
 # is in another snippet, so define as fewer characters as possible
 
-# imaginal mnemonic: < looks like v
-snippet vv "angle bracket" iA
-<${1}>${0}
-endsnippet
-
 global !p
 def exclude_functions(snip):
-    exceptions = ['atoi']
+    exceptions = ['atoi', 'ab']
     for e in exceptions:
         if snip.buffer[snip.line][:snip.column].endswith(e):
             return False
     return True
 endglobal
-context "exclude_functions(snip)"
 
+# imaginal mnemonic: < looks like v
+snippet vv "angle bracket" iA
+<${1}>${0}
+endsnippet
+
+context "exclude_functions(snip)"
 snippet ii "parenthesis" iAe
 (${1})${0}
 endsnippet
@@ -155,7 +155,8 @@ snippet qq "double quote" iA
 "${1}"${0}
 endsnippet
 
-snippet bb "dollar $ sign" iA
+context "exclude_functions(snip)"
+snippet bb "dollar $ sign" iAe
 $${0}
 endsnippet
 
