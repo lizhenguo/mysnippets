@@ -32,5 +32,9 @@ clean:
 endsnippet
 
 snippet g++ "g++ common argument"
-g++ -std=c++11 -Wall -Wextra -Wpedantic -pedantic -g -o $@ $^
+g++ -std=c++11 -Wall -Wextra -Wpedantic -pedantic -g -o $@ $(filter ${1:%.cc},$^)$0
+endsnippet
+
+snippet gcc "gcc common argument"
+gcc -Wall -Wextra -Wpedantic -pedantic -g -o $@ $(filter ${1:%.c},$^)$0
 endsnippet
