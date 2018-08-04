@@ -114,7 +114,7 @@ endsnippet
 
 global !p
 def exclude_functions(snip):
-    exceptions = ['atoi', 'ab']
+    exceptions = ['atoi', 'ab', 'stoi']
     for e in exceptions:
         if snip.buffer[snip.line][:snip.column].endswith(e):
             return False
@@ -126,6 +126,7 @@ snippet vv "angle bracket" iA
 <${1}>${0}
 endsnippet
 
+# NOTE: `e` options is used to be controlled by `exclude_functions`.
 context "exclude_functions(snip)"
 snippet ii "parenthesis" iAe
 (${1})${0}

@@ -1,10 +1,25 @@
 priority -40
 
-snippet php "<?php ?>" b
-<?php ${1:code} ?>
-$0
+snippet i "<?php ?>" i
+<?php ${1:code} ?>$0
 endsnippet
 
-snippet echoln "echo with newline in html"
+snippet ? "<?php" b
+<?php
+${1:code}
+?>${0}
+endsnippet
+
+snippet = "<?= ?>" i
+<?= ${1:code} ?>$0
+endsnippet
+
+snippet echoln "echo with newline in html" b
 echo ${1:code}${1/.+/ \. /}'<br />';$0
+endsnippet
+
+snippet CI_construct "CI constructor" b
+function __construct() {
+	parent::__construct();${1}
+}${0}
 endsnippet

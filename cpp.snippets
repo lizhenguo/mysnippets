@@ -4,12 +4,18 @@ snippet FormatData "Format Data Program C++ skeleton" b
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <regex>
+#include <iterator>
+#include <algorithm>
+#include <cstddef>  // for size_t
 using std::cout; using std::cin; using std::endl; using std::cerr;
 using std::ostream; using std::istream;
 using std::string;
 using std::istringstream; using std::ostringstream;
 using std::fstream; using std::ifstream; using std::ofstream;
 using std::vector;
+using std::regex; using std::regex_match;
+using std::istream_iterator; using std::ostream_iterator;
 
 void formatdata(ostream &, const char *);
 
