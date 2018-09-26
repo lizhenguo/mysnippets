@@ -1,29 +1,44 @@
 priority -40
 
-snippet i "<?php ?>" i
+snippet i "<?php ?>" iw
 <?php ${1:code} ?>$0
 endsnippet
 
 snippet ? "<?php" b
 <?php
 ${1:code}
-?>${0}
+?>$0
 endsnippet
 
+# NOTE: special punctuation can't be declared `w` option because it is not a
+# boundary of word.
 snippet = "<?= ?>" i
-<?= ${1:code} ?>$0
+<?= ${1:code}; ?>$0
 endsnippet
 
-snippet echoln "echo with newline in html" b
+snippet echoln "echo with newline in html" w
 echo ${1:code}${1/.+/ \. /}'<br />';$0
+endsnippet
+
+snippet "\$i([^a-zA-Z])" "avoid snippet expansion for PHP and html" riA
+$j`!p snip.rv = match.group(1)`$0
+endsnippet
+
+snippet .. "=>" iA
+=>
 endsnippet
 
 snippet CI_construct "CI constructor" b
 function __construct() {
 	parent::__construct();${1}
-}${0}
+}$0
 endsnippet
 
 snippet CI_defined_or_exit "CI defined or exit" b
-defined('BASEPATH') OR exit('No direct script access allowed');${0}
+defined('BASEPATH') OR exit('No direct script access allowed');$0
+endsnippet
+
+# In case of `return` will be expanded in "html.snippet".
+snippet CI_db_query "CI db query" iw
+${1:return}${1/.+/ /}$this->db->query(${2:$sql})${3/.+/->/}${3:result_array()};$0
 endsnippet

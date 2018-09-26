@@ -10,7 +10,7 @@ from vimsnippets import foldmarker, make_box, get_comment_format
 endglobal
 
 # file information comment block
-snippet fbox "file information block" b
+snippet fbox "file information comment block" b
 `!p
 if not snip.c:
 	width = int(vim.eval("&textwidth - (virtcol('.') == 1 ? 0 : virtcol('.'))")) or 71
@@ -46,7 +46,7 @@ $0
 endsnippet
 
 # function parameter and function information
-snippet fubox "function parameter and function" b
+snippet fubox "comment box for function parameter and function" b
 `!p
 box = make_box(1, 1)
 snip.rv = box[0][:3]
@@ -68,8 +68,7 @@ box = make_box(1)
 snip.rv = ' ' + box[1].rstrip() + ' ' + '\t' * 2`${4:none}
 `!p
 box = make_box(1, 1)
-snip.rv = box[3][-2:]`
-$0
+snip.rv = box[3][-2:]`$0
 endsnippet
 
 snippet vimmode "Vim modeline" b
@@ -161,4 +160,8 @@ endsnippet
 
 snippet ,, "dereference" iA
 ->${0}
+endsnippet
+
+snippet uid "uuid" wA
+uuid
 endsnippet
