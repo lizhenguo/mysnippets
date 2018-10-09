@@ -72,6 +72,8 @@ snip.rv = box[3][-2:]`$0
 endsnippet
 
 snippet vimmode "Vim modeline" b
+$2
+
 `!p
 box = make_box(1)
 snip.rv = type(box)
@@ -79,7 +81,7 @@ if (box[0].rstrip() == '-'):
 	snip.rv = '#'
 else:
 	snip.rv = box[0].rstrip()[0:2]
-` vim: set noet sts=4 sw=4 ts=4 tw=80${1:}: `!p
+` vim: set noet sts=4 sw=4 ts=4 tw=80$1: `!p
 box = make_box(1)
 if (box[-1].rstrip() == '-'):
 	snip.rv = '#'
@@ -164,4 +166,8 @@ endsnippet
 
 snippet uid "uuid" wA
 uuid
+endsnippet
+
+snippet ;. ";;" wA
+;;
 endsnippet
