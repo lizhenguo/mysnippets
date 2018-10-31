@@ -115,7 +115,7 @@ endsnippet
 
 global !p
 def exclude_functions(snip):
-    exceptions = ['atoi', 'ab', 'stoi']
+    exceptions = ['atoi', 'ab', 'stoi', 'sb', 'asci']
     for e in exceptions:
         if snip.buffer[snip.line][:snip.column].endswith(e):
             return False

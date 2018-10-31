@@ -1,6 +1,6 @@
 priority -40
 
-snippet dischar "Display a character in the video memory" 
+snippet dischar "Display a character in the video memory"
 ; Display a character in the video memory
 ; video memory physical 0x000b8000
 mov ah, 0x0fh	; set the display attribute
@@ -52,7 +52,7 @@ snippet int132 "Read Disk Sectors"
 ; DL = drive number (0=A:, 1=2nd floppy, 80h=drive 0, 81h=drive 1)
 ; ES:BX = pointer to buffer
 ; output
-; AH = status  
+; AH = status
 ; AL = number of sectors read
 ; CF = 0 if successful
 ;    = 1 if error
@@ -64,7 +64,7 @@ snippet int130 "Reset Disk System"
 ; AH = 00
 ; DL = drive number (0=A:, 1=2nd floppy, 80h=drive 0, 81h=drive 1)
 ; output:
-; AH = disk operation status  
+; AH = disk operation status
 ; CF = 0 if successful
 ;    = 1 if error
 
@@ -86,7 +86,7 @@ endsnippet
 snippet set_paging "Set up Paging"
 ; Set up paging
 ; 1. Set up page directory according to the memory
-; 2. Set up page table 
+; 2. Set up page table
 ; 3. Set cr3 pointing to the page directory
 ; 4. Start up paging bit in cr0
 
@@ -95,28 +95,28 @@ endsnippet
 snippet set_idt "Set up Interrupt"
 ; Set up Interrupt
 ; 1. set up 8259A
-; 2. set up idt (interrupt descriptor table) according to the interrupt 
+; 2. set up idt (interrupt descriptor table) according to the interrupt
 ; handling function address
 ; 3. set up the interrupt handling function for the specific interrupt
 
 endsnippet
 
-snippet ring0to1 "Initial switch from kernel to process ring0 to ring1" 
+snippet ring0to1 "Initial switch from kernel to process ring0 to ring1"
 ; Switch from ring0(kernel) to ring1(process)
 ; 1. construct the stack including EIP, CS, EFLAGS, ESP, SS
 ; 2. set the ESP to point the well-constructed stack top
 ; 3. just use 'iret(d)(iret and iretd interchangeably)' instruction
 endsnippet
 
-snippet set_tss "Setup TSS" 
+snippet set_tss "Setup TSS"
 ; Set up TSS
 ; TSS is used for switching from low privilege to high privilege
 ; 1. set up the TSS according to the TSS structure
 ; 2. set up the TSS descriptor into the GDT
 ; 3. load the TSS selector
-endsnippet       
+endsnippet
 
-snippet multi_process "Realize multiply process" 
+snippet multi_process "Realize multiply process"
 ; Realize multiply process
 ; 1. switch from ring0 to ring1 to run process 0
 ; 2. set up IDT, especially time interrupt to realize task switching
@@ -124,7 +124,7 @@ snippet multi_process "Realize multiply process"
 ; 4. set up process 0 and process 1 LDT descriptor and TSS descriptor
 endsnippet
 
-snippet protected-mode "protected-mode summary" 
+snippet protected-mode "protected-mode summary"
 ; How to write real mode and protected mode code?
 ; 1. mbr (master boot sector) in real mode code using the basic assembly code
 ; 2. Protected mode:
@@ -139,3 +139,11 @@ snippet protected-mode "protected-mode summary"
 ;	9. set up LDT (optional)
 ;	10. set up privelege (optional)
 endsnippet
+
+snippet asmheader "asm file name page title header" b
+name $1
+page ${2:55,132}
+title $3
+$0
+endsnippet
+
