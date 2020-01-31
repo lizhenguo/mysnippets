@@ -3,3 +3,9 @@ priority -40
 snippet scanf "scanf .. (scanf)"
 scanf("${1:%d}"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
 endsnippet
+
+# There is no support to escape quote in description.
+# Refer to https://github.com/SirVer/ultisnips/issues/804
+# snippet incq "#include '...'"
+# #include "${1:`!v expand('%:r')`.h}"
+# endsnippet

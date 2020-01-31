@@ -3,3 +3,8 @@ priority -40
 snippet #! "hash-bang" b
 #!/bin/bash
 endsnippet
+
+snippet findnotme "find . without this script" b
+find ${1:.} -type f -print0 | grep -zZv \`basename "\$0"\` | xargs -0 -n1 ${2:command}$0
+endsnippet
+

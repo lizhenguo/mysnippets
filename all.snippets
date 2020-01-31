@@ -32,7 +32,7 @@ box = make_box(len(t[1]), width)
 snip.rv = ' ' + box[1].strip() + ' '`Author: ${3:zhenguoli}
 `!p
 box = make_box(len(t[1]), width)
-snip.rv = ' ' + box[1].strip() + ' '`Contact: ${4:zhenguoli@hust.edu.cn}
+snip.rv = ' ' + box[1].strip() + ' '`Contact: ${4:zhenguoli@yandex.com}
 `!p
 box = make_box(len(t[1]), width)
 snip.rv = ' ' + box[1].strip() + ' '`Time: `date +'%d.%b.%Y %H:%M'`
@@ -50,25 +50,19 @@ snippet fubox "comment box for function parameter and function" b
 `!p
 box = make_box(1, 1)
 snip.rv = box[0][:3]
-`
+`${2:
 `!p
 box = make_box(1)
-snip.rv = ' ' + box[1].rstrip() + ' '`\brief: ${1:brief}
+snip.rv = ' ' + box[1].rstrip() + ' '`\brief ${1:brief}}
 `!p
 box = make_box(1)
-snip.rv = ' ' + box[1].rstrip() + ' '`\param: ${2:none}
+snip.rv = ' ' + box[1].rstrip() + ' '`\param ${3:none}
 `!p
 box = make_box(1)
-snip.rv = ' ' + box[1].rstrip() + ' '`\return: ${3:none}
-`!p
-box = make_box(1)
-snip.rv = ' ' + box[1].rstrip() + ' '`Example:
-`!p
-box = make_box(1)
-snip.rv = ' ' + box[1].rstrip() + ' ' + '\t' * 2`${4:none}
+snip.rv = ' ' + box[1].rstrip() + ' '`\return ${4:none}
 `!p
 box = make_box(1, 1)
-snip.rv = box[3][-2:]`$0
+snip.rv = ' ' + box[3][-2:]`$0
 endsnippet
 
 snippet vimmode "Vim modeline" b
@@ -115,7 +109,7 @@ endsnippet
 
 global !p
 def exclude_functions(snip):
-    exceptions = ['atoi', 'ab', 'stoi', 'sb', 'asci']
+    exceptions = ['atoi', 'ab', 'stoi', 'sb', 'asci', '__i', 'Sy', 'fini']
     for e in exceptions:
         if snip.buffer[snip.line][:snip.column].endswith(e):
             return False
@@ -138,7 +132,8 @@ snippet kk "curly bracket" iA
 endsnippet
 
 # force mnemonic: z is used less
-snippet yy "back tick" iA
+context "exclude_functions(snip)"
+snippet yy "back tick" iAe
 \`${1}\`${0}
 endsnippet
 
@@ -170,4 +165,23 @@ endsnippet
 
 snippet ;. ";;" wA
 ;;
+endsnippet
+
+snippet c "comment for doxygen format" bw
+`!p
+box = make_box(1, 1)
+snip.rv = box[0][:3]
+`
+`!p
+box = make_box(1)
+snip.rv = ' ' + box[1].rstrip() + ' '`${1:comment}
+`!p
+box = make_box(1, 1)
+snip.rv = ' ' + box[3][-2:]`$0
+endsnippet
+
+snippet ic "Description" w
+`!p
+box = make_box(1, 1)
+snip.rv = box[0][:1] * 3`< ${1:comment}$0
 endsnippet

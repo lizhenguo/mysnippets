@@ -39,3 +39,37 @@ void formatdata(ostream &${4:os}, const char *${5:filename}) {
 	${6:#statements}
 }
 endsnippet
+
+snippet commoninconlyinsource "common include only in source" b
+#include <iostream>
+using std::cout; using std::cin; using std::endl; using std::cerr;
+using std::ostream; using std::istream;
+#include <string>
+using std::string;
+#include <sstream>
+using std::istringstream; using std::ostringstream;
+#include <fstream>
+using std::fstream; using std::ifstream; using std::ofstream;
+#include <vector>
+using std::vector;
+#include <regex>
+using std::regex; using std::regex_match;
+#include <iterator>
+using std::istream_iterator; using std::ostream_iterator;
+#include <algorithm>
+#include <cstddef>  // for size_t
+$0
+endsnippet
+
+snippet commoninconlyinheader "common include only in header" b
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <vector>
+#include <regex>
+#include <iterator>
+#include <algorithm>
+#include <cstddef>  // for size_t
+$0
+endsnippet
